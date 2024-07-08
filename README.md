@@ -12,25 +12,25 @@
 <h2>🔨 Funcionalidades do Projeto</h2>
 <br>
 
-- `Cadastro de usuários`: Utilizando o endpoint `/cadastrar`, o usuário pode enviar seu login e senha, que serão salvos na base de dados MySql, neste processo a senha será cripografada antes de ser salva;
+- `Cadastro de usuários`: Utilizando o endpoint `/cadastrar`, o usuário deve enviar seu login e senha, que serão salvos na base de dados MySql, neste processo a senha será cripografada antes de ser salva;
 <br>
 
-- `Login`: Após o usuario e senha terem sido cadastrados, o usuário poderá enviar no corpo da requisição um JSON contendo login e senha, se encontrado na base de dados e os dados baterem, a API irá retornar um token JWT;
+- `Login`: Após o usuario e senha terem sido cadastrados, o usuário deve enviar no corpo da requisição um JSON contendo login e senha, se encontrado na base de dados e os dados baterem, a API irá retornar um token JWT;
 <br>
 
 - `Autenticação`: Após receber o token JWT, o mesmo terá 2 horas de validade, e deverá ser enviado no header das próximas requisições que o usuário fizer, caso contrário as requisições serão barradas;
 <br>
 
-- `Cadastrar tópico`: Enviando uma requisição POST ao endpoint `/topicos` o usuário poderá criar seu próprio tópico, enviando no corpo da requisição o título, a mensagem e a qual curso se refere o tópico, a data de criação e o nome do usuário que realizou o cadastro serão adicionados automaticamente;
+- `Cadastrar tópico`: Enviando uma requisição POST ao endpoint `/topicos` o usuário poderá criar seu próprio tópico, enviando no corpo da requisição o título, a mensagem e a qual curso se refere o tópico, a data de criação, estado do tópico e o nome do usuário que realizou o cadastro serão adicionados automaticamente;
 <br>
 
 - `Listar tópicos`: Enviando uma requisição GET ao endpoint `/topicos` o retorno será uma lista com os tópicos existentes na base de dados;
 <br>
 
-- `Atualizar tópico`: Enviando uma requisição PUT ao endpoint `/topicos` o usuário deverá enviar no corpo da requisição o id do tópico, e a auteração que deseja fazer, no título, mensagem, nome do curso ou se o estado do tópico continuará como "ABERTO" ou será mudado para "FECHADO", a atualização só será aplicada se os dados do usuário forem compatíveis com o criador do tópico;
+- `Atualizar tópico`: Enviando uma requisição PUT ao endpoint `/topicos` o usuário deverá enviar no corpo da requisição o `id` do tópico, e a alteração que deseja fazer, no título, mensagem, nome do curso ou se o estado do tópico continuará como `"ABERTO"` ou será mudado para `"FECHADO"`, a atualização só será aplicada se os dados do usuário forem compatíveis com o criador do tópico, o único campo obrigatório é o `id`;
 <br>
 
-- `Detalhar tópico`: Enviando uma requisição GET ao endpoint `/topicos/{id}` o retorno será somente o tópico que contém o id enviado;
+- `Detalhar tópico`: Enviando uma requisição GET ao endpoint `/topicos/{id}` o retorno será somente o tópico que contém o id enviado, caso exista;
 <br>
 
 - `Deletar tópico`: Enviando uma requisição DELETE ao endpoint `/topicos/{id}` caso os dados do usuário sejam os mesmos do criador do tópico, ele será deletado da base de dados.
