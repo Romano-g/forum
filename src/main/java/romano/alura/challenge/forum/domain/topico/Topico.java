@@ -26,6 +26,7 @@ public class Topico {
     private LocalDate data;
     private String autor;
     private String curso;
+    private EstadoDoTopico estado;
 
     public Topico(String token, DadosCadastroTopico dados) {
         this.titulo = dados.titulo();
@@ -33,6 +34,7 @@ public class Topico {
         this.autor = getUsernameOfToken(token);
         this.curso = dados.curso();
         this.data = LocalDate.now();
+        this.estado = EstadoDoTopico.ABERTO;
     }
 
     private String getUsernameOfToken(String tokenJwt) {
@@ -62,8 +64,20 @@ public class Topico {
             if (dados.curso() != null) {
                 this.curso = dados.curso();
             }
+
+            if (dados.estado() != null) {
+                this.estado = dados.estado();
+            }
         } else {
             throw new RuntimeException("Usuário inválido");
+        }
+    }
+
+    public void deletar(String token) {
+        var user = getUsernameOfToken(token);
+
+        if (!autor.equalsIgnoreCase(user)) {
+            throw new RuntimeException("Usuário inválido!");
         }
     }
 }

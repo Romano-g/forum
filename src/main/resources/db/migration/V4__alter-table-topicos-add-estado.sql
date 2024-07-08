@@ -1,0 +1,1 @@
+alter table topicos add estado varchar(20) not null;

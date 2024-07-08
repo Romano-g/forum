@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import romano.alura.challenge.forum.domain.topico.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/topicos")
 public class TopicosController {
@@ -39,6 +41,26 @@ public class TopicosController {
         topico.atualizarInformações(token, dados);
 
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalharTopico(@PathVariable Long id) {
+        var topico = repository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletarTopico(@RequestHeader("Authorization") String token, @PathVariable Long id) {
+        Optional<Topico> topico = Optional.of(repository.getReferenceById(id));
+
+        if (topico.isPresent()) {
+            topico.get().deletar(token);
+            repository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }
