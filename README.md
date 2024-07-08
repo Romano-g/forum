@@ -6,7 +6,7 @@
   <img loading="lazy" alt="Status badge" src="https://img.shields.io/badge/STATUS-FINALIZADO-9400D3">
 </p>
 <br>
-<p>SpringTalks é um fórum criado seguindo as regras do modelo API REST, utilizando token JWT como instrumento de autenticação e base de dandos MySql, sendo a primeira API REST que criei sozinho e último desafio do projeto ONE.</p>
+<p>SpringTalks é um fórum criado seguindo as regras do modelo API REST, utilizando token JWT como instrumento de autenticação e base de dados MySql, sendo a primeira API REST que criei sozinho e último desafio do projeto ONE.</p>
 
 <br>
 <h2>🔨 Funcionalidades do Projeto</h2>
